@@ -1,4 +1,4 @@
-package com.lao.exceptionhandling;
+package com.lao.vehicle;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package com.lao.exceptionhandling;
+package com.lao.vehicle;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
