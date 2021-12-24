@@ -19,7 +19,7 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Override
     public Vehicle saveVehicle(Vehicle vehicle) throws VehicleAlreadyExistsException {
-        if(vehicleRepo.existsById(vehicle.getId())){
+        if (vehicleRepo.existsById(vehicle.getId())) {
             throw new VehicleAlreadyExistsException();
         }
         return vehicleRepo.save(vehicle);
@@ -27,15 +27,15 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Override
     public List<Vehicle> getAllVehicles() throws VehicleNotFoundException {
-        return (List<Vehicle>)vehicleRepo.findAll();
+        return (List<Vehicle>) vehicleRepo.findAll();
     }
 
     @Override
     public Vehicle getVehicleById(String id) throws VehicleNotFoundException {
         Vehicle vehicle;
-        if(vehicleRepo.findById(id).isEmpty()){
-           throw new VehicleNotFoundException();
-        }else {
+        if (vehicleRepo.findById(id).isEmpty()) {
+            throw new VehicleNotFoundException();
+        } else {
             vehicle = vehicleRepo.findById(id).get();
         }
         return vehicle;
