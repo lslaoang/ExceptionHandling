@@ -27,22 +27,15 @@ public class VehicleController {
     }
 
     @GetMapping("/vehicles")
-    public ResponseEntity<?> getAllBlogs() throws VehicleNotFoundException {
+    public ResponseEntity<?> getAllVehicles() throws VehicleNotFoundException {
+        if(vehicleService.getAllVehicles().isEmpty()){
+            throw new VehicleNotFoundException("Empty record.");
+        }
         return new ResponseEntity<>(vehicleService.getAllVehicles(), HttpStatus.OK);
     }
 
     @GetMapping("vehicle/{id}")
     public ResponseEntity<?> getVehicleById(@PathVariable("id") String id) throws VehicleNotFoundException {
         return new ResponseEntity<>(vehicleService.getVehicleById(id), HttpStatus.OK);
-    }
-
-    @ExceptionHandler(value = VehicleAlreadyExistsException.class)
-    public ResponseEntity<?> handleVehicleAlreadyExistsException(VehicleAlreadyExistsException vehicleAlreadyExistsException) {
-        return new ResponseEntity<>("Vehicle with already exists.\n" + vehicleAlreadyExistsException.getMessage(), HttpStatus.CONFLICT);
-    }
-
-    @ExceptionHandler(value = VehicleNotFoundException.class)
-    public ResponseEntity<?> handleVehicleNotFoundException(VehicleNotFoundException vehicleNotFoundException) {
-        return new ResponseEntity<>("Cannot find any vehicle record.\n" + vehicleNotFoundException.getMessage(), HttpStatus.NOT_FOUND);
     }
 }
