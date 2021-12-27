@@ -1,7 +1,7 @@
 package com.lao.vehicle.exception;
 
 public class VehicleNotFoundException extends RuntimeException {
-    private String message;
+    String message;
 
     public VehicleNotFoundException(String message) {
         super(message);
