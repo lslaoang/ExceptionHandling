@@ -29,7 +29,7 @@ public class VehicleController {
     @GetMapping("/vehicles")
     public ResponseEntity<?> getAllVehicles() throws VehicleNotFoundException {
         if(vehicleService.getAllVehicles().isEmpty()){
-            throw new VehicleNotFoundException("Empty record.");
+            throw new VehicleNotFoundException("No vehicles found.");
         }
         return new ResponseEntity<>(vehicleService.getAllVehicles(), HttpStatus.OK);
     }

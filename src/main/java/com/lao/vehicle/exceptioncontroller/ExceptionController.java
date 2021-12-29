@@ -15,11 +15,11 @@ public class ExceptionController {
 
     @ExceptionHandler(value = VehicleAlreadyExistsException.class)
     public ResponseEntity<?> handleVehicleAlreadyExistsException(VehicleAlreadyExistsException vehicleAlreadyExistsException) {
-        return new ResponseEntity<>(ALREADY_EXIST + vehicleAlreadyExistsException.getMessage(), HttpStatus.CONFLICT);
+        return new ResponseEntity<>(ALREADY_EXIST + vehicleAlreadyExistsException, HttpStatus.CONFLICT);
     }
 
     @ExceptionHandler(value = VehicleNotFoundException.class)
     public ResponseEntity<?> handleVehicleNotFoundException(VehicleNotFoundException vehicleNotFoundException) {
-        return new ResponseEntity<>(VEHICLE_NOT_FOUND + vehicleNotFoundException.getMessage(), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(VEHICLE_NOT_FOUND + vehicleNotFoundException, HttpStatus.NOT_FOUND);
     }
 }
