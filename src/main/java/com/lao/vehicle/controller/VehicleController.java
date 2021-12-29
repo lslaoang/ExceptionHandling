@@ -20,13 +20,18 @@ public class VehicleController {
         this.vehicleService = vehicleService;
     }
 
-    @PostMapping("/vehicle")
-    public ResponseEntity<?> saveVehicle(@RequestBody Vehicle vehicle) throws VehicleAlreadyExistsException {
-        Vehicle savedVehicle = vehicleService.saveVehicle(vehicle);
-        return new ResponseEntity<>(savedVehicle, HttpStatus.CREATED);
+    @PostMapping("/vehicle/add")
+    public ResponseEntity<?> saveVehicle(@RequestBody Vehicle vehicle) throws RuntimeException {
+        try{
+            Vehicle savedVehicle = vehicleService.saveVehicle(vehicle);
+            return new ResponseEntity<>(savedVehicle, HttpStatus.CREATED);
+        }catch (RuntimeException e){
+            throw new VehicleAlreadyExistsException("Error saving vehicle with ID: "+vehicle.getId(),e);
+        }
+
     }
 
-    @GetMapping("/vehicles")
+    @GetMapping(value = "/vehicles")
     public ResponseEntity<?> getAllVehicles() throws VehicleNotFoundException {
         if(vehicleService.getAllVehicles().isEmpty()){
             throw new VehicleNotFoundException("No vehicles found.");

@@ -4,11 +4,13 @@ public class VehicleAlreadyExistsException extends RuntimeException {
     private String message;
 
     public VehicleAlreadyExistsException(String message) {
-        super(message);
         this.message = message;
     }
 
-    public VehicleAlreadyExistsException() {
+    public VehicleAlreadyExistsException(String message, Throwable throwable) {
+        super(message,throwable);
+    }
 
+    public VehicleAlreadyExistsException() {
     }
 }
