@@ -12,6 +12,11 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("api/v1")
 public class VehicleController {
 
+    /**
+     Happy New Year!
+     Happy 2022!
+     **/
+
 
     private final VehicleService vehicleService;
 
