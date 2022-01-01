@@ -9,6 +9,8 @@ import java.util.List;
 
 public interface VehicleService {
     Vehicle saveVehicle(Vehicle vehicle) throws VehicleAlreadyExistsException;
+
     List<Vehicle> getAllVehicles() throws VehicleNotFoundException;
+
     Vehicle getVehicleById(String id) throws VehicleNotFoundException;
 }

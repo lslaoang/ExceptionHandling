@@ -13,13 +13,11 @@ import org.springframework.web.bind.annotation.*;
 public class VehicleController {
 
     /**
-     Happy New Year!
-     Happy 2022!
+     * Happy New Year!
+     * Happy 2022!
      **/
 
-
     private final VehicleService vehicleService;
-
 
     public VehicleController(final VehicleService vehicleService) {
         this.vehicleService = vehicleService;
@@ -27,18 +25,17 @@ public class VehicleController {
 
     @PostMapping("/vehicle/add")
     public ResponseEntity<?> saveVehicle(@RequestBody Vehicle vehicle) throws RuntimeException {
-        try{
+        try {
             Vehicle savedVehicle = vehicleService.saveVehicle(vehicle);
             return new ResponseEntity<>(savedVehicle, HttpStatus.CREATED);
-        }catch (RuntimeException e){
-            throw new VehicleAlreadyExistsException("Error saving vehicle with ID: "+vehicle.getId(),e);
+        } catch (RuntimeException e) {
+            throw new VehicleAlreadyExistsException("Error saving vehicle with ID: " + vehicle.getId(), e);
         }
-
     }
 
     @GetMapping(value = "/vehicles")
     public ResponseEntity<?> getAllVehicles() throws VehicleNotFoundException {
-        if(vehicleService.getAllVehicles().isEmpty()){
+        if (vehicleService.getAllVehicles().isEmpty()) {
             throw new VehicleNotFoundException("No vehicles found.");
         }
         return new ResponseEntity<>(vehicleService.getAllVehicles(), HttpStatus.OK);

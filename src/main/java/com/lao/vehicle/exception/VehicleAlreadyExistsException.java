@@ -8,7 +8,7 @@ public class VehicleAlreadyExistsException extends RuntimeException {
     }
 
     public VehicleAlreadyExistsException(String message, Throwable throwable) {
-        super(message,throwable);
+        super(message, throwable);
     }
 
     public VehicleAlreadyExistsException() {
